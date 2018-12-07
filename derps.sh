@@ -1,4 +1,6 @@
-#/bin/bash
+#!/bin/bash
+
+set -eu -o pipefail
 
 DATA=$(curl -A 'random' https://api.reddit.com/r/animalsbeingderps/new.json | jq .data.children[$(( ( RANDOM % 24 )  + 0 ))].data)
 MEDIA=$(echo $DATA | jq -r .media.reddit_video.fallback_url)
